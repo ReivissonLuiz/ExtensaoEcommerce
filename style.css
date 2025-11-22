@@ -23,11 +23,24 @@ header {
     align-items: center;
     max-width: 1100px;
     margin: 0 auto;
+    gap: 20px;
 }
 
 .header-content h1 {
     margin: 0;
     font-size: 26px;
+    flex: 1;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: contain;
 }
 
 .cart-btn {
@@ -115,7 +128,6 @@ main {
     opacity: 0.85;
 }
 
-/* Estilos para a página de carrinho */
 .cart-page {
     max-width: 1000px;
     margin: auto;
