@@ -153,3 +153,21 @@ function mostrarNotificacao(mensagem) {
         notificacao.remove();
     }, 3000);
 }
+
+function filterProducts() {
+    const input = document.getElementById('search-input');
+    const filter = input.value.toUpperCase();
+    const grid = document.querySelector('.grid');
+    const cards = grid.getElementsByClassName('card');
+
+    for (let i = 0; i < cards.length; i++) {
+        const h3 = cards[i].getElementsByTagName('h3')[0];
+        const txtValue = h3.textContent || h3.innerText;
+        
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            cards[i].style.display = ""; // Mostra o card
+        } else {
+            cards[i].style.display = "none"; // Esconde o card
+        }
+    }
+}
