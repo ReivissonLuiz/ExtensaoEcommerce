@@ -109,18 +109,26 @@ function limparCarrinho() {
     }
 }
 
+// FUNÇÃO CORRIGIDA PARA FINALIZAR A COMPRA E REDIRECIONAR
 function finalizarCompra() {
     if (carrinho.length === 0) {
-        alert('Seu carrinho está vazio!');
+        alert("Seu carrinho está vazio!");
         return;
     }
-    
+
+    // 1. Calcula o total da compra
     const total = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
-    alert(`Compra finalizada com sucesso!\nTotal: R$ ${total.toFixed(2)}\nObrigado pela compra!`);
-    
+
+    // 2. Salva os dados da compra no localStorage para a tela de confirmação
+    localStorage.setItem('compra_carrinho', JSON.stringify(carrinho));
+    localStorage.setItem('compra_total', total.toFixed(2)); 
+
+    // 3. Limpa o carrinho local e no localStorage (a compra foi "finalizada")
     carrinho = [];
     salvarCarrinho();
-    window.location.href = 'index.html';
+    
+    // 4. Redireciona para a nova tela de confirmação
+    window.location.href = 'confirmacao.html';
 }
 
 function salvarCarrinho() {

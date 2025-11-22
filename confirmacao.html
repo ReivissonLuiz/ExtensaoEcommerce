@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Pedido</title>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+   
+        .confirmation-page {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .confirmation-page h1 {
+            color: #4CAF50; 
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .summary-box {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: left;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .summary-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        .summary-box li {
+            padding: 5px 0;
+            border-bottom: 1px dotted #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+        .summary-box strong {
+            display: block;
+            margin-top: 15px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Confirmação de Pagamento</h1>
+        </div>
+    </header>
+
+    <div class="container confirmation-page">
+        <div id="confirmation-content">
+        </div>
+        
+        <button class="btn btn-primary" id="back-to-shop-btn">Voltar para a Loja</button>
+    </div>
+
+    <footer>©2025 - E-commerce de Eletrônicos</footer>
+
+ 
+    <script src="confirmacao.js"></script>
+</body>
+</html>
