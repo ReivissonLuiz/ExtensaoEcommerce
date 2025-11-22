@@ -71,8 +71,22 @@ function exibirCarrinho() {
         return;
     }
     
-    let html = '<table class="cart-table"><tr><th>Produto</th><th>Preço</th><th>Qtd</th><th>Subtotal</th><th>Ação</th></tr>';
-    let total = 0;
+// Bloco de geração de linha no seu script.js (dentro do carrinho.forEach)
+html += `
+    <tr>
+        <td data-label="Produto">${item.nome}</td>
+        <td data-label="Preço">R$ ${item.preco.toFixed(2).replace('.', ',')}</td>
+        <td data-label="Qtd">
+            <button class="qty-btn" onclick="diminuirQuantidade('${item.nome}')">-</button>
+            <span class="qty-display">${item.quantidade}</span>
+            <button class="qty-btn" onclick="aumentarQuantidade('${item.nome}')">+</button>
+        </td>
+        <td data-label="Subtotal">R$ ${subtotal.toFixed(2).replace('.', ',')}</td>
+        <td data-label="Ação">
+            <button class="btn-remove" onclick="removerDoCarrinho('${item.nome}')">Remover</button>
+        </td>
+    </tr>
+`;
     
     carrinho.forEach(item => {
         const subtotal = item.preco * item.quantidade;
@@ -95,7 +109,7 @@ function exibirCarrinho() {
         `;
     });
     
-    html += '</table>';
+    html += '</tbody></table>'; 
     cartItems.innerHTML = html;
     cartTotal.textContent = total.toFixed(2).replace('.', ',');
 }

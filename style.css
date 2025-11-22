@@ -288,3 +288,81 @@ footer {
     font-size: 14px;
     color: #333;
 }
+
+@media (max-width: 600px) {
+    
+    /* 1. Altera o cabeçalho e o botão de voltar */
+    .header-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .header-content h1 {
+        font-size: 22px;
+    }
+    
+    /* 2. Transforma a tabela em blocos empilhados */
+    .cart-table, .cart-table tbody, .cart-table tr, .cart-table td {
+        display: block;
+        width: 100%;
+    }
+    
+    /* Esconde o cabeçalho da tabela (Produto, Preço, Qtd, etc.) */
+    .cart-table thead {
+        display: none;
+    }
+    
+    /* Estiliza cada célula (td) para parecer um item de lista */
+    .cart-table tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    .cart-table td {
+        text-align: right;
+        padding-left: 50%; /* Espaço para o label */
+        position: relative;
+        border: none;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .cart-table td:last-child {
+        border-bottom: 0;
+    }
+    
+    /* Adiciona o label (cabeçalho) antes do conteúdo da célula */
+    .cart-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        color: #555;
+    }
+    
+    /* Ajusta o layout da quantidade para ficar centralizado */
+    .cart-table td:nth-child(3) { /* Coluna Qtd */
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    
+    .cart-table td:nth-child(3)::before {
+        line-height: 30px; /* Alinha o label com os botões */
+    }
+    
+    /* Ajusta o resumo da compra */
+    .cart-summary {
+        text-align: center;
+    }
+    
+    .cart-summary button {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
