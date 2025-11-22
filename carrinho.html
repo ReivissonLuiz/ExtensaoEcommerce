@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Carrinho - E-commerce de Eletrônicos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Meu Carrinho</h1>
+            <a href="index.html" class="cart-btn">← Voltar</a>
+        </div>
+    </header>
+
+    <div class="container cart-page">
+        <div id="cart-items"></div>
+        
+        <div class="cart-summary">
+            <h3>Total: R$ <span id="cart-total">0,00</span></h3>
+            <button class="btn btn-checkout" onclick="finalizarCompra()">✓ Finalizar Compra</button>
+            <button class="btn btn-clear" onclick="limparCarrinho()">🗑 Limpar Carrinho</button>
+        </div>
+    </div>
+
+    <footer>©2025 - E-commerce de Eletrônicos</footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

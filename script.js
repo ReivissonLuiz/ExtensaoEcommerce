@@ -1,3 +1,147 @@
-function comprar(produto) {
-    alert(`Você adicionou ao carrinho: ${produto}`);
+let carrinho = [];
+
+document.addEventListener('DOMContentLoaded', function() {
+    carregarCarrinho();
+    atualizarContador();
+});
+
+function adicionarAoCarrinho(nome, preco) {
+    const itemExistente = carrinho.find(item => item.nome === nome);
+    
+    if (itemExistente) {
+        itemExistente.quantidade++;
+    } else {
+        carrinho.push({
+            nome: nome,
+            preco: preco,
+            quantidade: 1
+        });
+    }
+    
+    salvarCarrinho();
+    atualizarContador();
+    mostrarNotificacao(`${nome} adicionado ao carrinho!`);
+}
+
+function removerDoCarrinho(nome) {
+    carrinho = carrinho.filter(item => item.nome !== nome);
+    salvarCarrinho();
+    carregarCarrinho();
+}
+
+function aumentarQuantidade(nome) {
+    const item = carrinho.find(item => item.nome === nome);
+    if (item) {
+        item.quantidade++;
+        salvarCarrinho();
+        carregarCarrinho();
+    }
+}
+
+function diminuirQuantidade(nome) {
+    const item = carrinho.find(item => item.nome === nome);
+    if (item) {
+        if (item.quantidade > 1) {
+            item.quantidade--;
+        } else {
+            removerDoCarrinho(nome);
+        }
+        salvarCarrinho();
+        carregarCarrinho();
+    }
+}
+
+function atualizarContador() {
+    const cartCount = document.getElementById('cart-count');
+    if (cartCount) {
+        const totalItens = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
+        cartCount.textContent = totalItens;
+    }
+}
+
+function exibirCarrinho() {
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    
+    if (!cartItems) return;
+    
+    if (carrinho.length === 0) {
+        cartItems.innerHTML = '<p class="empty-cart">Seu carrinho está vazio</p>';
+        cartTotal.textContent = '0,00';
+        return;
+    }
+    
+    let html = '<table class="cart-table"><tr><th>Produto</th><th>Preço</th><th>Qtd</th><th>Subtotal</th><th>Ação</th></tr>';
+    let total = 0;
+    
+    carrinho.forEach(item => {
+        const subtotal = item.preco * item.quantidade;
+        total += subtotal;
+        
+        html += `
+            <tr>
+                <td>${item.nome}</td>
+                <td>R$ ${item.preco.toFixed(2).replace('.', ',')}</td>
+                <td>
+                    <button class="qty-btn" onclick="diminuirQuantidade('${item.nome}')">-</button>
+                    <span class="qty-display">${item.quantidade}</span>
+                    <button class="qty-btn" onclick="aumentarQuantidade('${item.nome}')">+</button>
+                </td>
+                <td>R$ ${subtotal.toFixed(2).replace('.', ',')}</td>
+                <td>
+                    <button class="btn-remove" onclick="removerDoCarrinho('${item.nome}')">Remover</button>
+                </td>
+            </tr>
+        `;
+    });
+    
+    html += '</table>';
+    cartItems.innerHTML = html;
+    cartTotal.textContent = total.toFixed(2).replace('.', ',');
+}
+
+function limparCarrinho() {
+    if (confirm('Tem certeza que deseja limpar o carrinho?')) {
+        carrinho = [];
+        salvarCarrinho();
+        carregarCarrinho();
+        exibirCarrinho();
+    }
+}
+
+function finalizarCompra() {
+    if (carrinho.length === 0) {
+        alert('Seu carrinho está vazio!');
+        return;
+    }
+    
+    const total = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
+    alert(`Compra finalizada com sucesso!\nTotal: R$ ${total.toFixed(2)}\nObrigado pela compra!`);
+    
+    carrinho = [];
+    salvarCarrinho();
+    window.location.href = 'index.html';
+}
+
+function salvarCarrinho() {
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+}
+
+function carregarCarrinho() {
+    const carrinhoSalvo = localStorage.getItem('carrinho');
+    if (carrinhoSalvo) {
+        carrinho = JSON.parse(carrinhoSalvo);
+    }
+    exibirCarrinho();
+}
+
+function mostrarNotificacao(mensagem) {
+    const notificacao = document.createElement('div');
+    notificacao.className = 'notificacao';
+    notificacao.textContent = mensagem;
+    document.body.appendChild(notificacao);
+    
+    setTimeout(() => {
+        notificacao.remove();
+    }, 3000);
 }

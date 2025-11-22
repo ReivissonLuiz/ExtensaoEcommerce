@@ -7,7 +7,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>E-commerce de Eletrônicos</header>
+    <header>
+        <div class="header-content">
+            <h1>E-commerce de Eletrônicos</h1>
+            <a href="carrinho.html" class="cart-btn">
+                🛒 <span id="cart-count">0</span>
+            </a>
+        </div>
+    </header>
 
     <div class="container">
         <h2>Produtos em Destaque</h2>
@@ -17,56 +24,56 @@
                 <img src="img/fonesemfio.png" alt="Fone Bluetooth">
                 <h3>Fone Bluetooth</h3>
                 <p>R$ 99,90</p>
-                <button class="btn" onclick="comprar('Fone Bluetooth')">Comprar</button>
+                <button class="btn" onclick="adicionarAoCarrinho('Fone Bluetooth', 99.90)">Comprar</button>
             </div>
 
             <div class="card">
                 <img src="img/tecladomecanico.png" alt="Teclado Mecânico">
                 <h3>Teclado Mecânico</h3>
                 <p>R$ 199,90</p>
-                <button class="btn" onclick="comprar('Teclado Mecânico')">Comprar</button>
+                <button class="btn" onclick="adicionarAoCarrinho('Teclado Mecânico', 199.90)">Comprar</button>
             </div>
 
             <div class="card">
                 <img src="img/mousegamer.png" alt="Mouse Gamer">
                 <h3>Mouse Gamer</h3>
                 <p>R$ 79,90</p>
-                <button class="btn" onclick="comprar('Mouse Gamer')">Comprar</button>
+                <button class="btn" onclick="adicionarAoCarrinho('Mouse Gamer', 79.90)">Comprar</button>
             </div>
 
             <div class="card">
                 <img src="img/headsetgamer.png" alt="Headset Gamer">
                 <h3>Headset Gamer</h3>
                 <p>R$ 149,90</p>
-                <button class="btn" onclick="comprar('Headset Gamer')">Comprar</button>
+                <button class="btn" onclick="adicionarAoCarrinho('Headset Gamer', 149.90)">Comprar</button>
             </div>
 
             <div class="card">
                 <img src="img/monitor120hz.jpg" alt="Monitor 120Hz">
                 <h3>Monitor 120Hz</h3>
                 <p>R$ 899,90</p>
-                <button class="btn" onclick="comprar('Monitor 124Hz')">Comprar</button>
+                <button class="btn" onclick="adicionarAoCarrinho('Monitor 120Hz', 899.90)">Comprar</button>
             </div>
 
             <div class="card">
                 <img src="img/caixadesombluetooth.png" alt="Caixa de Som Bluetooth">
                 <h3>Caixa de Som Bluetooth</h3>
                 <p>R$ 1766,90</p>
-                <button class="btn" onclick="comprar('Caixa de Som Bluetooth')">Comprar</button>
+                <button class="btn" onclick="adicionarAoCarrinho('Caixa de Som Bluetooth', 1766.90)">Comprar</button>
             </div>
 
             <div class="card">
                 <img src="img/webcamfullhd.png" alt="Webcam Full HD">
                 <h3>Webcam Full HD</h3>
                 <p>R$ 89,90</p>
-                <button class="btn" onclick="comprar('Webcam Full HD')">Comprar</button>
+                <button class="btn" onclick="adicionarAoCarrinho('Webcam Full HD', 89.90)">Comprar</button>
             </div>
 
             <div class="card">
                 <img src="img/carregadorturbo.png" alt="Carregador Turbo">
                 <h3>Carregador Turbo</h3>
                 <p>R$ 49,90</p>
-                <button class="btn" onclick="comprar('Carregador Turbo')">Comprar</button>
+                <button class="btn" onclick="adicionarAoCarrinho('Carregador Turbo', 49.90)">Comprar</button>
             </div>
 
         </div>
