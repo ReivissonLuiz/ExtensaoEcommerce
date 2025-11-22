@@ -128,7 +128,7 @@ function finalizarCompra() {
     salvarCarrinho();
     
     // 4. Redireciona para a nova tela de confirmação
-    window.location.href = 'confirmacao.html';
+    window.location.href = 'pagamento.html';
 }
 
 function salvarCarrinho() {

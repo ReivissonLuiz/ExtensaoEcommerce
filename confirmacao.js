@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Recupera os dados da compra
     const carrinhoJSON = localStorage.getItem('compra_carrinho');
     const total = localStorage.getItem('compra_total');
+    const formaPagamento = localStorage.getItem('forma_pagamento');
 
     if (carrinhoJSON && total) {
         const carrinho = JSON.parse(carrinhoJSON);
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         resumoHTML += `
                 </ul>
+                <p><strong>Forma de Pagamento:</strong> ${formaPagamento.toUpperCase()}</p> <!-- NOVO -->
                 <strong>Total Pago: R$ ${total.replace('.', ',')}</strong>
             </div>
         `;

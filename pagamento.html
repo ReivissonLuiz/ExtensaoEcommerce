@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha o Pagamento</title>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        /* Estilos simples para a seleção de pagamento */
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .payment-option {
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        .payment-option:hover {
+            background-color: #f9f9f9;
+            border-color: #007bff;
+        }
+        .payment-option.selected {
+            border-color: #28a745;
+            background-color: #e9f7ed;
+        }
+        .payment-option i {
+            margin-right: 10px;
+        }
+        .btn-continue {
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Escolha a Forma de Pagamento</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="payment-options">
+            <div class="payment-option" data-method="cartao">
+                <i class="fas fa-credit-card"></i> Cartão de Crédito/Débito
+            </div>
+            <div class="payment-option" data-method="pix">
+                <i class="fas fa-qrcode"></i> Pix (Pagamento Instantâneo)
+            </div>
+            <div class="payment-option" data-method="boleto">
+                <i class="fas fa-barcode"></i> Boleto Bancário
+            </div>
+        </div>
+        
+        <button class="btn btn-continue" id="continue-payment-btn" disabled>Continuar</button>
+    </div>
+
+    <footer>©2025 - E-commerce de Eletrônicos</footer>
+
+    <!-- Novo script para a lógica de pagamento -->
+    <script src="pagamento.js"></script>
+</body>
+</html>
