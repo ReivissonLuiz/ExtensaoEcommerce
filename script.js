@@ -71,48 +71,41 @@ function exibirCarrinho() {
         return;
     }
     
-// Bloco de geração de linha no seu script.js (dentro do carrinho.forEach)
-html += `
-    <tr>
-        <td data-label="Produto">${item.nome}</td>
-        <td data-label="Preço">R$ ${item.preco.toFixed(2).replace('.', ',')}</td>
-        <td data-label="Qtd">
-            <button class="qty-btn" onclick="diminuirQuantidade('${item.nome}')">-</button>
-            <span class="qty-display">${item.quantidade}</span>
-            <button class="qty-btn" onclick="aumentarQuantidade('${item.nome}')">+</button>
-        </td>
-        <td data-label="Subtotal">R$ ${subtotal.toFixed(2).replace('.', ',')}</td>
-        <td data-label="Ação">
-            <button class="btn-remove" onclick="removerDoCarrinho('${item.nome}')">Remover</button>
-        </td>
-    </tr>
-`;
+    // 1. Inicia a tabela com cabeçalho e corpo (para o CSS responsivo)
+    let html = '<table class="cart-table"><thead><tr><th>Produto</th><th>Preço</th><th>Qtd</th><th>Subtotal</th><th>Ação</th></tr></thead><tbody>';
+    let total = 0;
     
+    // 2. Loop para adicionar cada item do carrinho
     carrinho.forEach(item => {
         const subtotal = item.preco * item.quantidade;
         total += subtotal;
         
+        // Gera a linha da tabela com os atributos data-label
         html += `
             <tr>
-                <td>${item.nome}</td>
-                <td>R$ ${item.preco.toFixed(2).replace('.', ',')}</td>
-                <td>
+                <td data-label="Produto">${item.nome}</td>
+                <td data-label="Preço">R$ ${item.preco.toFixed(2).replace('.', ',')}</td>
+                <td data-label="Qtd">
                     <button class="qty-btn" onclick="diminuirQuantidade('${item.nome}')">-</button>
                     <span class="qty-display">${item.quantidade}</span>
                     <button class="qty-btn" onclick="aumentarQuantidade('${item.nome}')">+</button>
                 </td>
-                <td>R$ ${subtotal.toFixed(2).replace('.', ',')}</td>
-                <td>
+                <td data-label="Subtotal">R$ ${subtotal.toFixed(2).replace('.', ',')}</td>
+                <td data-label="Ação">
                     <button class="btn-remove" onclick="removerDoCarrinho('${item.nome}')">Remover</button>
                 </td>
             </tr>
         `;
     });
     
-    html += '</tbody></table>'; 
+    // 3. Fecha o corpo e a tabela
+    html += '</tbody></table>';
+    
+    // 4. Insere o HTML e atualiza o total
     cartItems.innerHTML = html;
     cartTotal.textContent = total.toFixed(2).replace('.', ',');
 }
+
 
 function limparCarrinho() {
     if (confirm('Tem certeza que deseja limpar o carrinho?')) {
@@ -130,18 +123,11 @@ function finalizarCompra() {
         return;
     }
 
-    // 1. Calcula o total da compra
     const total = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
 
-    // 2. Salva os dados da compra no localStorage para a tela de confirmação
     localStorage.setItem('compra_carrinho', JSON.stringify(carrinho));
     localStorage.setItem('compra_total', total.toFixed(2)); 
 
-    // 3. Limpa o carrinho local e no localStorage (a compra foi "finalizada")
-    carrinho = [];
-    salvarCarrinho();
-    
-    // 4. Redireciona para a nova tela de confirmação
     window.location.href = 'pagamento.html';
 }
 
