@@ -25,8 +25,14 @@ document.addEventListener('DOMContentLoaded', ( ) => {
         if (selectedMethod) {
             // Salva a forma de pagamento escolhida no localStorage
             localStorage.setItem('forma_pagamento', selectedMethod);
-            
-            // Redireciona para a tela de confirmação
+
+            // Se for cartão, ir para formulário de dados do cartão
+            if (selectedMethod === 'cartao') {
+                window.location.href = 'pagamento_cartao.html';
+                return;
+            }
+
+            // Para outros métodos, redireciona para a tela de confirmação
             window.location.href = 'confirmacao.html';
         } else {
             alert('Por favor, selecione uma forma de pagamento para continuar.');
