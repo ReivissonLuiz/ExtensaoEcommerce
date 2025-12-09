@@ -397,4 +397,15 @@ footer a:hover {
         width: 100%;
         margin: 5px 0;
     }
+
+    /* Ajuste visual da Missão 2 (Commit 4) */
+body {
+    scroll-behavior: smooth;
+}
+
+/* Última melhoria da Missão 2 (Commit 5) */
+h2 {
+    color: #2a2a2a;
+}
+
 }
