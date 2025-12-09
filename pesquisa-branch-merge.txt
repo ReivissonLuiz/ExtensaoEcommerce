@@ -1,0 +1,20 @@
+# Pesquisa sobre Branch e Merge no Git
+
+## O que é uma Branch?
+Uma branch é como uma linha paralela de desenvolvimento dentro do Git. 
+Ela permite que diferentes pessoas ou funcionalidades sejam desenvolvidas sem alterar diretamente o código principal. 
+Exemplo: criar uma branch chamada `feat/menu-header` para adicionar o menu de navegação.
+
+## O que é Merge?
+O merge é o processo de juntar o conteúdo de uma branch ao código principal (geralmente a branch `main`). 
+Ele combina as alterações feitas em diferentes branches em um único histórico.
+
+## Por que não fazer Merge direto?
+Se fizermos merge direto na `main`, corremos o risco de quebrar o projeto ou misturar código inacabado. 
+Por isso, usamos Pull Requests: eles permitem revisar o código antes de juntar na `main`.
+
+## Pull Request
+Um Pull Request é uma forma profissional de propor que uma branch seja integrada à `main`. 
+Ele permite que colegas revisem, comentem e aprovem as mudanças antes do merge.
+
+---
