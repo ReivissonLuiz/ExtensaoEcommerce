@@ -63,6 +63,25 @@ header {
     transform: scale(1.05);
 }
 
+/* ===== MENU DE NAVEGAÇÃO ===== */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
 main {
     flex: 1;
 }
@@ -279,6 +298,7 @@ main {
     }
 }
 
+/* ===== RODAPÉ ===== */
 footer {
     text-align: center;
     padding: 20px;
@@ -289,9 +309,25 @@ footer {
     color: #333;
 }
 
+footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 0;
+    margin-top: 10px;
+}
+
+footer a {
+    color: #333;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #1a73e8;
+}
+
 @media (max-width: 600px) {
-    
-    /* 1. Altera o cabeçalho e o botão de voltar */
     .header-content {
         flex-direction: column;
         gap: 10px;
@@ -301,18 +337,15 @@ footer {
         font-size: 22px;
     }
     
-    /* 2. Transforma a tabela em blocos empilhados */
     .cart-table, .cart-table tbody, .cart-table tr, .cart-table td {
         display: block;
         width: 100%;
     }
     
-    /* Esconde o cabeçalho da tabela (Produto, Preço, Qtd, etc.) */
     .cart-table thead {
         display: none;
     }
     
-    /* Estiliza cada célula (td) para parecer um item de lista */
     .cart-table tr {
         margin-bottom: 15px;
         border: 1px solid #ddd;
@@ -322,7 +355,7 @@ footer {
     
     .cart-table td {
         text-align: right;
-        padding-left: 50%; /* Espaço para o label */
+        padding-left: 50%;
         position: relative;
         border: none;
         border-bottom: 1px solid #eee;
@@ -332,7 +365,6 @@ footer {
         border-bottom: 0;
     }
     
-    /* Adiciona o label (cabeçalho) antes do conteúdo da célula */
     .cart-table td::before {
         content: attr(data-label);
         position: absolute;
@@ -345,7 +377,7 @@ footer {
         color: #555;
     }
     
-    /* Ajusta o layout da quantidade para ficar centralizado */
+        /* Ajusta o layout da quantidade para ficar centralizado */
     .cart-table td:nth-child(3) { /* Coluna Qtd */
         display: flex;
         justify-content: flex-end;
